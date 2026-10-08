@@ -12,10 +12,8 @@ import java.util.List;
 
 public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private static final int TYPE_USER = 1;
-    private static final int TYPE_AI = 2;
-
     private final List<ChatMessage> messages;
+    private static final int TYPE_USER = 1, TYPE_AI = 0;
 
     public ChatAdapter(List<ChatMessage> messages) {
         this.messages = messages;
@@ -30,26 +28,20 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-
         if (viewType == TYPE_USER) {
-            View view = inflater.inflate(R.layout.item_chat_right, parent, false);
-            return new UserViewHolder(view);
+            return new UserHolder(inflater.inflate(R.layout.item_chat_right, parent, false));
         } else {
-            View view = inflater.inflate(R.layout.item_chat_left, parent, false);
-            return new AiViewHolder(view);
+            return new AiHolder(inflater.inflate(R.layout.item_chat_left, parent, false));
         }
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        ChatMessage message = messages.get(position);
-
-        if (holder instanceof UserViewHolder) {
-            ((UserViewHolder) holder).senderText.setText(message.getSender());
-            ((UserViewHolder) holder).messageText.setText(message.getText());
-        } else if (holder instanceof AiViewHolder) {
-            ((AiViewHolder) holder).senderText.setText(message.getSender());
-            ((AiViewHolder) holder).messageText.setText(message.getText());
+        ChatMessage msg = messages.get(position);
+        if (holder instanceof UserHolder) {
+            ((UserHolder) holder).bind(msg);
+        } else {
+            ((AiHolder) holder).bind(msg);
         }
     }
 
@@ -58,25 +50,29 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return messages.size();
     }
 
-    static class UserViewHolder extends RecyclerView.ViewHolder {
-        TextView senderText;
-        TextView messageText;
-
-        UserViewHolder(@NonNull View itemView) {
-            super(itemView);
-            senderText = itemView.findViewById(R.id.senderText);
-            messageText = itemView.findViewById(R.id.messageText);
+    static class UserHolder extends RecyclerView.ViewHolder {
+        TextView sender, text;
+        UserHolder(@NonNull View v) {
+            super(v);
+            sender = v.findViewById(R.id.senderText);
+            text = v.findViewById(R.id.messageText);
+        }
+        void bind(ChatMessage msg) {
+            sender.setText(msg.getSender());
+            text.setText(msg.getText());
         }
     }
 
-    static class AiViewHolder extends RecyclerView.ViewHolder {
-        TextView senderText;
-        TextView messageText;
-
-        AiViewHolder(@NonNull View itemView) {
-            super(itemView);
-            senderText = itemView.findViewById(R.id.senderText);
-            messageText = itemView.findViewById(R.id.messageText);
+    static class AiHolder extends RecyclerView.ViewHolder {
+        TextView sender, text;
+        AiHolder(@NonNull View v) {
+            super(v);
+            sender = v.findViewById(R.id.senderText);
+            text = v.findViewById(R.id.messageText);
+        }
+        void bind(ChatMessage msg) {
+            sender.setText(msg.getSender());
+            text.setText(msg.getText());
         }
     }
 }

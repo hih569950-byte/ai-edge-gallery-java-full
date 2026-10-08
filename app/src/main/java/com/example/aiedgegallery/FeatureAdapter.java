@@ -10,34 +10,34 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class FeatureAdapter extends RecyclerView.Adapter<FeatureAdapter.FeatureViewHolder> {
+public class FeatureAdapter extends RecyclerView.Adapter<FeatureAdapter.ViewHolder> {
 
-    private final List<FeatureItem> items;
-    private final OnFeatureClickListener listener;
+    private final List<FeatureCard> items;
+    private final OnClickListener listener;
 
-    public interface OnFeatureClickListener {
-        void onFeatureClick(int position);
+    public interface OnClickListener {
+        void onClick(int position);
     }
 
-    public FeatureAdapter(List<FeatureItem> items, OnFeatureClickListener listener) {
+    public FeatureAdapter(List<FeatureCard> items, OnClickListener listener) {
         this.items = items;
         this.listener = listener;
     }
 
     @NonNull
     @Override
-    public FeatureViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_feature, parent, false);
-        return new FeatureViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FeatureViewHolder holder, int position) {
-        FeatureItem item = items.get(position);
-        holder.title.setText(item.getTitle());
-        holder.subtitle.setText(item.getSubtitle());
-        holder.itemView.setOnClickListener(v -> listener.onFeatureClick(position));
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        FeatureCard card = items.get(position);
+        holder.title.setText(card.getTitle());
+        holder.subtitle.setText(card.getSubtitle());
+        holder.itemView.setOnClickListener(v -> listener.onClick(position));
     }
 
     @Override
@@ -45,11 +45,9 @@ public class FeatureAdapter extends RecyclerView.Adapter<FeatureAdapter.FeatureV
         return items.size();
     }
 
-    static class FeatureViewHolder extends RecyclerView.ViewHolder {
-        TextView title;
-        TextView subtitle;
-
-        FeatureViewHolder(@NonNull View itemView) {
+    static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView title, subtitle;
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.featureTitle);
             subtitle = itemView.findViewById(R.id.featureSubtitle);

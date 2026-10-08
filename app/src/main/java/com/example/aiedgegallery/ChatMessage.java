@@ -11,15 +11,7 @@ public class ChatMessage {
         this.isUser = isUser;
     }
 
-    public String getSender() {
-        return sender;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public boolean isUser() {
-        return isUser;
-    }
+    public String getSender() { return sender; }
+    public String getText() { return text; }
+    public boolean isUser() { return isUser; }
 }

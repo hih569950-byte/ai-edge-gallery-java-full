@@ -3,30 +3,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#0F172A"
-    android:padding="8dp">
+    android:background="#0F172A">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="AI Edge Gallery"
+        android:text="Agent Skills"
         android:textColor="#FFFFFF"
-        android:textSize="28sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         android:padding="16dp" />
 
     <TextView
+        android:id="@+id/skillInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Explore AI Features"
-        android:textColor="#CBD5E1"
-        android:textSize="16sp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp" />
+        android:textColor="#94A3B8"
+        android:padding="8dp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/featureGrid"
+        android:id="@+id/skillsList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="8dp" />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/enableButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enable Skills"
+        android:layout_margin="8dp" />
 </LinearLayout>

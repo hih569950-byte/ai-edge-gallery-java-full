@@ -9,7 +9,6 @@
         android:id="@+id/senderText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="AI"
         android:textColor="#CBD5E1"
         android:textSize="12sp"
         android:textStyle="bold" />
@@ -18,10 +17,9 @@
         android:id="@+id/messageText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         android:background="#1E293B"
-        android:maxWidth="280dp"
-        android:padding="12dp"
         android:textColor="#F8FAFC"
-        android:textSize="16sp"/>
+        android:maxWidth="300dp"
+        android:padding="12dp"
+        android:layout_marginTop="4dp" />
 </LinearLayout>
