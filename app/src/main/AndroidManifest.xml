@@ -20,6 +20,18 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity android:name=".ChatActivity" />
+        <activity android:name=".AskImageActivity" />
+        <activity android:name=".AudioScribeActivity" />
+        <activity android:name=".VideoActivity" />
+        <activity android:name=".MediaSearchActivity" />
+        <activity android:name=".PromptLabActivity" />
+        <activity android:name=".ModelManagerActivity" />
+        <activity android:name=".AgentSkillsActivity" />
+        <activity android:name=".TinyGardenActivity" />
+        <activity android:name=".MobileActionsActivity" />
+        <activity android:name=".CallAssistantActivity" />
     </application>
 
 </manifest>

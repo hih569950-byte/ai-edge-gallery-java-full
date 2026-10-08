@@ -33,4 +33,13 @@
         android:layout_height="wrap_content"
         android:text="Download Model"
         android:layout_margin="8dp" />
+
+    <Button
+        android:id="@+id/callAssistantButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Open AI Calling"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp" />
 </LinearLayout>
